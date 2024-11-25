@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('guest')->group(function() {
+Route::middleware('guest')->group(function () {
     Route::get('/register', [LoginRegisterController::class, 'register'])->name('register');
     Route::post('/store', [LoginRegisterController::class, 'store'])->name('store');
     Route::get('/login', [LoginRegisterController::class, 'login'])->name('login');

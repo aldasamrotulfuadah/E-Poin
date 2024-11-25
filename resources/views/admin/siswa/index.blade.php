@@ -17,10 +17,10 @@
 <form action="" method="get">
   <label>Cari :</label>
   <input type="text" name="cari">
-  <input type="submit" value="cari">
+  <input type="submit" value="Cari">
 </form>
 <br><br>
-<a href="{{ route('siswa.crate') }}">Tambah Siswa</a>
+<a href="{{ route('siswa.create') }}">Tambah Siswa</a>
 
 @if(Session::has('success'))
 <div class="alert alert-success" role="alert">
@@ -42,7 +42,7 @@
 @forelse ($siswas as $siswa)
 <tr>
   <td>
-    <img src="{{ asset('storage/Siswa/'.$siswa->image) }}" width="120px" hight="120px" alt="">
+    <img src="{{ asset('storage/siswas/'.$siswa->image) }}" width="120px" hight="120px" alt="">
 </td>
 <td>{{ $siswa->nis }}</td>
 <td>{{ $siswa->name }}</td>
@@ -75,7 +75,7 @@
 </tr>
 @endforelse
 </table>
-{{ $Siswa->links() }}
+{{ $siswas->links() }}
 
 </body>
 </html>

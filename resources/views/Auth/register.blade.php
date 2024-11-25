@@ -15,7 +15,7 @@
   @endif
 
   <br>
-  <label>Email Adress</label><br>
+  <label>Email Address</label><br>
   <input type="email" id="email" name="email" value="{{ old('email') }}"><br><br>
 
   @if ($errors->has('email'))

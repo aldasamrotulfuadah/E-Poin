@@ -28,6 +28,7 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($request->password),
             'usertype' => 'admin'
         ]);
+
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
@@ -47,20 +48,20 @@ class LoginRegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        if (Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if ($request->user()->usertype == 'admin') {
                 return redirect('admin/dashboard')->withSuccess('You have successfully registered logged in!');
             } 
         }
         return back()->withErrors([
-            'email' => 'You provided credentials do not match in our records.',
+            'email' => 'Your provided credentials do not match in our records.',
         ])->onlyInput('email');  
     }
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->invaldate();
+        $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')
         ->withSuccess('You have logged out successfully!');;
